@@ -1,46 +1,60 @@
-import user from '../model/user.js'
-import express from 'express';
-const server = express();
-import bodyParser from 'body-parser';
-server.use(express.json());
-server.use(bodyParser.json());
+import User from '../model/user.js';
 
-// const CreateUser=
-export async function createUser(req,res){
-    console.log(req.body);
+export async function createUser(req, res) {
     try {
         // Check if both email and password are provided in the request body
         if (!req.body.email || !req.body.password) {
-            return res.status(400).send("Email and password are required.");
+            return res.status(400).json({ error: "Email and password are required." });
         }
 
-        const userData = new user({
-            email: req.body.email,
-            password: req.body.password,
-         
+        // Check if user already exists
+        const existingUser = await User.findOne({
+            where: { email: req.body.email }
         });
-        await userData.save(); 
-        console.log("User created");
-        res.sendStatus(200);
+
+        if (existingUser) {
+            return res.status(409).json({ error: "User with this email already exists." });
+        }
+
+        // Create new user using Sequelize
+        const userData = await User.create({
+            email: req.body.email,
+            password: req.body.password
+        });
+
+        console.log("User created:", userData.id);
+        res.status(201).json({
+            message: "User created successfully",
+            user: { id: userData.id, email: userData.email }
+        });
     } catch (err) {
-        console.error(err);
-        res.sendStatus(500);
+        console.error("Error creating user:", err);
+        res.status(500).json({ error: "Internal server error", details: err.message });
     }
-
-}
-export async function fetchUser(req,res){
-    if(req.body){
-        res.json(await user.find({}));
-    }
-    else if(req.body.email){
-        res.json(await find({email:req.body.email}))
-    }
-
 }
 
-export function greet(){
+export async function fetchUser(req, res) {
+    try {
+        let where = {};
+
+        // Build query based on request body
+        if (req.body.email) {
+            where.email = req.body.email;
+        }
+
+        // Fetch users using Sequelize
+        const users = await User.findAll({
+            where: where,
+            attributes: ['id', 'email', 'createdAt', 'updatedAt'] // Exclude password
+        });
+
+        res.json(users);
+    } catch (err) {
+        console.error("Error fetching users:", err);
+        res.status(500).json({ error: "Internal server error", details: err.message });
+    }
+}
+
+export function greet() {
     console.log("hello baby");
 }
-
-// export CreateUser;
-// export fetchUser();

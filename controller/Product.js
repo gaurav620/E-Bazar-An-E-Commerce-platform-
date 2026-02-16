@@ -1,50 +1,63 @@
 import Product from '../model/product.js';
 
+export async function createProduct(req, res) {
+  try {
+    // Create a new product using Sequelize
+    const product = await Product.create(req.body);
 
-export  async function createProduct(req, res) {
-  // Create a new product instance based on the request body
-  const product =new Product(req.body);
-  
-  // Calculate the discount price
-  // product.discountPrice = Math.round(product.price * (1 - product.discountPercentage / 100));
-
-  // Save the product to the database
-  product.save()
-    .then(() => {
-      // Send response when the product is successfully saved
-      res.status(201).send("Product created successfully");
-    })
-    .catch((error)  => {
-      // Send error response if there's an error saving the product
-      console.error("Error saving product:", error);
-      res.status(500).send("Internal server error");
+    res.status(201).json({
+      message: "Product created successfully",
+      product: product
     });
+  } catch (error) {
+    console.error("Error saving product:", error);
+    res.status(500).json({ error: "Internal server error", details: error.message });
+  }
 }
-
-
 
 export async function fetchAllProduct(req, res) {
   try {
-    let query = {};
-    console.log("console print   "+req.query.gender)
+    let where = {};
+
+    // Build query conditions based on query parameters
     if (req.query.gender) {
-      query.gender = req.query.gender;
-      console.log("console print   "+req.query.gender)
+      where.gender = req.query.gender;
     } else if (req.query.id) {
-      query.id = req.query.id;
-    } else if (req.query.brand) {
-      query.brand = req.query.brand;
+      where.id = req.query.id;
     } else if (req.query.name) {
-      query.name = req.query.name;
-    }
-    else if(req.query.productdetails){
-      query.productdetails=req.query.productdetails
+      where.name = req.query.name;
+    } else if (req.query.category) {
+      where.category = req.query.category;
+    } else if (req.query.productdetails) {
+      where.productdetails = req.query.productdetails;
     }
 
-    const products = await Product.find(query).lean();
+    // Fetch products using Sequelize findAll
+    const products = await Product.findAll({
+      where: where,
+      raw: true // Similar to MongoDB's .lean()
+    });
+
     res.json(products);
   } catch (error) {
     console.error('Error fetching products:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error', details: error.message });
+  }
+}
+
+export async function fetchProductById(req, res) {
+  try {
+    const { id } = req.params;
+
+    const product = await Product.findByPk(id);
+
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    res.json(product);
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 }
