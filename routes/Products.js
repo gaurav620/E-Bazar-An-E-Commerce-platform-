@@ -7,21 +7,24 @@ router.get('/', async (req, res) => {
     const gender = req.query.gender;
 
     try {
-        // Use Sequelize's findAll method to fetch products by gender
+        let whereClause = {};
+
+        // If gender is provided, filter by it; otherwise, return all products
+        if (gender) {
+            whereClause = { gender };
+        }
+
+        // Use Sequelize's findAll method to fetch products
         const product = await Product.findAll({
-            where: { gender }
+            where: whereClause,
+            raw: true
         });
 
-        // If no products are found, return a 404 response
-        if (product.length === 0) {
-            return res.status(404).json({ message: 'No products found for this category' });
-        }
-        
-        // Return the products as JSON
+        // Return the products as JSON (even if empty array)
         res.status(200).json(product);
     } catch (err) {
         console.error('Error fetching products by category:', err);
-        res.status(500).json({ error: 'Error fetching products' });
+        res.status(500).json({ error: 'Error fetching products', details: err.message });
     }
 });
 

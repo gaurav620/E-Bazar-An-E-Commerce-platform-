@@ -1,0 +1,383 @@
+-- E-Bazar Clothing Store Products
+-- Delete old products
+DELETE FROM Products;
+-- Insert Men's Clothing
+INSERT INTO Products (
+        gender,
+        name,
+        category,
+        price,
+        discount,
+        imageUrl,
+        productdetails,
+        discountPrice,
+        createdAt,
+        updatedAt
+    )
+VALUES -- Men's Shirts
+    (
+        'men',
+        'Classic White Formal Shirt',
+        'Shirts',
+        1499,
+        40,
+        'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500',
+        'Premium cotton formal shirt, perfect for office wear',
+        899,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Blue Denim Casual Shirt',
+        'Shirts',
+        1299,
+        35,
+        'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500',
+        'Trendy denim shirt for casual occasions',
+        844,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Black Slim Fit Shirt',
+        'Shirts',
+        1399,
+        40,
+        'https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=500',
+        'Stylish slim fit shirt for modern look',
+        839,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Checkered Casual Shirt',
+        'Shirts',
+        1199,
+        30,
+        'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500',
+        'Comfortable checkered pattern shirt',
+        839,
+        NOW(),
+        NOW()
+    ),
+    -- Men's T-Shirts
+    (
+        'men',
+        'Black Round Neck T-Shirt',
+        'T-Shirts',
+        599,
+        30,
+        'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500',
+        'Premium cotton round neck tee',
+        419,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'White V-Neck T-Shirt',
+        'T-Shirts',
+        549,
+        30,
+        'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500',
+        'Classic white v-neck tee',
+        384,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Navy Blue Polo T-Shirt',
+        'T-Shirts',
+        899,
+        35,
+        'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500',
+        'Stylish polo t-shirt with collar',
+        584,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Graphic Print T-Shirt',
+        'T-Shirts',
+        699,
+        40,
+        'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500',
+        'Trendy graphic print tee',
+        419,
+        NOW(),
+        NOW()
+    ),
+    -- Men's Jeans & Pants
+    (
+        'men',
+        'Blue Slim Fit Jeans',
+        'Jeans',
+        1999,
+        40,
+        'https://images.unsplash.com/photo-1542272604-787c3835535d?w=500',
+        'Comfortable slim fit denim jeans',
+        1199,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Black Skinny Jeans',
+        'Jeans',
+        2199,
+        40,
+        'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500',
+        'Stretchable skinny fit jeans',
+        1319,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Khaki Chino Pants',
+        'Pants',
+        1799,
+        35,
+        'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500',
+        'Premium chino pants for smart casual look',
+        1169,
+        NOW(),
+        NOW()
+    ),
+    (
+        'men',
+        'Formal Black Trousers',
+        'Pants',
+        1599,
+        30,
+        'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500',
+        'Classic formal trousers',
+        1119,
+        NOW(),
+        NOW()
+    ),
+    -- Women's Tops
+    (
+        'women',
+        'Floral Print Top',
+        'Tops',
+        1299,
+        40,
+        'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500',
+        'Beautiful floral print casual top',
+        779,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'White Silk Blouse',
+        'Tops',
+        1799,
+        35,
+        'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500',
+        'Elegant silk blouse for formal wear',
+        1169,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'Black Crop Top',
+        'Tops',
+        899,
+        30,
+        'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500',
+        'Trendy crop top for casual outings',
+        629,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'Striped Cotton Top',
+        'Tops',
+        1099,
+        35,
+        'https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=500',
+        'Comfortable striped cotton top',
+        714,
+        NOW(),
+        NOW()
+    ),
+    -- Women's Dresses
+    (
+        'women',
+        'Flowy Maxi Dress',
+        'Dresses',
+        2499,
+        40,
+        'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500',
+        'Elegant flowy maxi dress perfect for parties',
+        1499,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'Little Black Dress',
+        'Dresses',
+        2199,
+        35,
+        'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=500',
+        'Classic little black dress',
+        1429,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'Floral Summer Dress',
+        'Dresses',
+        1899,
+        40,
+        'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500',
+        'Light and breezy summer dress',
+        1139,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'Party Wear Dress',
+        'Dresses',
+        2999,
+        40,
+        'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500',
+        'Stunning party wear dress',
+        1799,
+        NOW(),
+        NOW()
+    ),
+    -- Women's Jeans & Pants
+    (
+        'women',
+        'High Waist Skinny Jeans',
+        'Jeans',
+        1999,
+        40,
+        'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500',
+        'Trendy high waist skinny jeans',
+        1199,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'Blue Boyfriend Jeans',
+        'Jeans',
+        1799,
+        35,
+        'https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=500',
+        'Comfortable boyfriend fit jeans',
+        1169,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'Black Leggings',
+        'Pants',
+        799,
+        30,
+        'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500',
+        'Stretchable comfortable leggings',
+        559,
+        NOW(),
+        NOW()
+    ),
+    (
+        'women',
+        'White Palazzo Pants',
+        'Pants',
+        1299,
+        35,
+        'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500',
+        'Flowy palazzo pants',
+        844,
+        NOW(),
+        NOW()
+    ),
+    -- Unisex Items
+    (
+        'unisex',
+        'Black Hoodie',
+        'Hoodies',
+        1799,
+        40,
+        'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500',
+        'Comfortable cotton hoodie with pockets',
+        1079,
+        NOW(),
+        NOW()
+    ),
+    (
+        'unisex',
+        'Gray Sweatshirt',
+        'Hoodies',
+        1599,
+        35,
+        'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=500',
+        'Cozy sweatshirt for winter',
+        1039,
+        NOW(),
+        NOW()
+    ),
+    (
+        'unisex',
+        'Denim Jacket',
+        'Jackets',
+        2499,
+        40,
+        'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500',
+        'Classic denim jacket',
+        1499,
+        NOW(),
+        NOW()
+    ),
+    (
+        'unisex',
+        'Leather Jacket',
+        'Jackets',
+        3999,
+        35,
+        'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500',
+        'Premium leather jacket',
+        2599,
+        NOW(),
+        NOW()
+    ),
+    (
+        'unisex',
+        'Sports Track Pants',
+        'Activewear',
+        1299,
+        30,
+        'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500',
+        'Comfortable track pants for workout',
+        909,
+        NOW(),
+        NOW()
+    ),
+    (
+        'unisex',
+        'Gym Shorts',
+        'Activewear',
+        899,
+        30,
+        'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=500',
+        'Breathable gym shorts',
+        629,
+        NOW(),
+        NOW()
+    );
