@@ -1,5 +1,5 @@
 import express from 'express';
-import Category from '../model/Category.js'; // Sequelize Category model
+import Category from '../model/category.js'; // Sequelize Category model
 
 const router = express.Router();
 
