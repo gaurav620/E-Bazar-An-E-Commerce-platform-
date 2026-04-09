@@ -46,24 +46,24 @@ Architecture modular hai: routes, controllers, models aur server setup alag-alag
 
 ## 5) Project Workflow (End-to-End)
 
-## A) Home and Product Browsing
+### A) Home and Product Browsing
 1. User `/` pe aata hai → `index.ejs` render hota hai  
 2. Category click par `/product?gender=...` hit hota hai  
 3. Product page frontend `/products?gender=...` API call karta hai  
 4. Backend filtered products return karta hai
 
-## B) Product Details
+### B) Product Details
 1. User specific product par click karta hai  
 2. Route `/product/:id` product fetch karta hai  
 3. `productDetails.ejs` me product info render hoti hai
 
-## C) Cart Flow
+### C) Cart Flow
 1. Add item via `POST /cart/add`  
 2. Cart fetch via `GET /cart/:userId`  
 3. Quantity update via `PUT /cart/update`  
 4. Remove item via `DELETE /cart/remove`
 
-## D) Order Flow
+### D) Order Flow
 1. Order create via `POST /buy/create`  
 2. Backend product price fetch karke total calculate karta hai  
 3. Order list via `GET /buy/user/:userId`  
@@ -120,34 +120,34 @@ Ye points openly bolna positive hota hai:
 
 ## 10) Expected Interview Questions with Strong Answers
 
-## Q1. Is project ka core objective kya tha?
+### Q1. Is project ka core objective kya tha?
 **Answer:** Ek practical e-commerce workflow banana jisme catalog browsing, cart management aur order lifecycle real backend APIs ke saath kaam kare.
 
-## Q2. Tumne Express + Sequelize kyun choose kiya?
+### Q2. Tumne Express + Sequelize kyun choose kiya?
 **Answer:** Express fast and flexible hai, aur Sequelize relational modeling easy banata hai. Is combination se development speed aur maintainability dono improve huye.
 
-## Q3. Order total kaise calculate hota hai?
+### Q3. Order total kaise calculate hota hai?
 **Answer:** Order create karte waqt product DB se fetch hota hai, phir `discountPrice` available ho to woh use hota hai, warna base `price`; usko quantity se multiply karke `totalPrice` store hota hai.
 
-## Q4. Cart me duplicate item add ho to kya hota hai?
+### Q4. Cart me duplicate item add ho to kya hota hai?
 **Answer:** Existing cart row check hota hai (`userId + productId`). Agar row milti hai to quantity increment hoti hai, new row create nahi hoti.
 
-## Q5. API error handling kaise ki?
+### Q5. API error handling kaise ki?
 **Answer:** `try/catch` blocks ke through handled hai, validation failures pe 400/404 type responses aur server-side issue pe 500 return kiya gaya.
 
-## Q6. Data model relationships kya hain?
+### Q6. Data model relationships kya hain?
 **Answer:** Cart aur Order dono User aur Product ko foreign keys se reference karte hain; Sequelize `belongsTo` associations use ki gayi hain.
 
-## Q7. Tumhare project ka toughest part kya tha?
+### Q7. Tumhare project ka toughest part kya tha?
 **Answer:** Frontend template routes aur backend JSON APIs ke beech consistent flow maintain karna, especially product listing/detail aur buy/cart transitions me.
 
-## Q8. Security ke liye kya kiya aur kya pending hai?
+### Q8. Security ke liye kya kiya aur kya pending hai?
 **Answer:** Basic validation and controlled API responses implemented hain; next steps me password hashing, auth tokens, input sanitization aur rate limiting add karna priority hai.
 
-## Q9. Production-ready banane ke liye top 3 changes?
+### Q9. Production-ready banane ke liye top 3 changes?
 **Answer:** (1) Complete auth + authorization, (2) test coverage + CI, (3) centralized error/log monitoring.
 
-## Q10. Agar scale badhe to architecture kaise evolve karoge?
+### Q10. Agar scale badhe to architecture kaise evolve karoge?
 **Answer:** Initially modular monolith ko optimize karunga (caching, indexing, queue for async tasks), phir domain-based service separation (catalog/cart/order) consider karunga.
 
 ---
@@ -165,4 +165,3 @@ Ye points openly bolna positive hota hai:
 - [ ] Product → Cart → Order workflow confidently explain
 - [ ] 3 strengths + 3 limitations bol pao
 - [ ] Future improvements realistic bata pao
-
