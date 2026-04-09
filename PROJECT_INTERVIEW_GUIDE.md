@@ -75,7 +75,7 @@ Architecture modular hai: routes, controllers, models aur server setup alag-alag
 ## 6) Database Design (Core Entities)
 
 - **users**: `id, email, password`
-- **product**: `gender, name, category, price, discount, imageUrl, productdetails, discountPrice`
+- **product**: `gender, name, category, price, discount, imageUrl, productdetails (legacy field name), discountPrice`
 - **categories**: category master data
 - **carts**: `userId + productId + quantity`
 - **orders**: `userId, productId, quantity, totalPrice, status, shipping/customer fields`
@@ -161,7 +161,7 @@ Ye points openly bolna positive hota hai:
 ## 12) Quick Revision Checklist (Interview se pehle)
 
 - [ ] 30-second intro yaad
-- [ ] Tech stack rationale clear
-- [ ] Product → Cart → Order workflow confidently explain
+- [ ] Tech stack rationale clear hai
+- [ ] Product → Cart → Order workflow confidently explain kar pao
 - [ ] 3 strengths + 3 limitations bol pao
 - [ ] Future improvements realistic bata pao
